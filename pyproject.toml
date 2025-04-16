@@ -1,0 +1,28 @@
+[project]
+name = "unipdb_mapper"
+version = "0.0.1"
+description = "Python Package for residue mapping between UniProt and PDB entries."
+authors = [
+    { name = "Hrishikesh DHONDGE", email = "hbdhondge@gmail.com" }
+]
+readme = "README.md"
+license = "MIT"
+keywords = ["UniProt", "PDB", "residue", "numbering", "mapper"]
+requires-python = ">=3.11"
+dependencies = [
+    "bs4>=0.0.2",
+    "lxml>=5.3.2",
+    "sh>=2.2.2",
+    "wget>=3.2",
+]
+
+[project.scripts]
+unipdb = "unipdb_mapper:__main__.main"
+
+[project.urls]
+Repository = "https://github.com/HrishiDhondge/unipdb_mapper.git"
+"Bug Tracker" = "https://github.com/HrishiDhondge/unipdb_mapper/issues"
+
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"

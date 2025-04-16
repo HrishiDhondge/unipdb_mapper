@@ -1,0 +1,18 @@
+name: PyLint
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+    - uses: Silleellie/pylint-github-action@v2.1
+      with:
+        lint-path: |
+          unipdb_mapper/
+        python-version: 3.11
+        requirements-path: requirements.txt
+
