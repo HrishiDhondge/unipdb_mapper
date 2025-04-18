@@ -1,12 +1,11 @@
  #!/usr/bin/env python3
 """
-The class for residue mapping from PDB to UniProt and Vice-versa.
+The class for residue mapping from UniProt to PDB and Vice-versa.
 """
 
 from urllib.request import urlopen
 import os
 import json
-import argparse
 import sys
 import wget
 from bs4 import BeautifulSoup
@@ -17,17 +16,17 @@ class ResiduesMapper():
     Class for mapping the residue numbering between PDB <--> UniProt residues
     """
 
-    def __init__(self, src_id, res_pos, db=str, path=None):
+    def __init__(self, src_id, res_pos, src_db=str, path=None):
         self.src_id = src_id
-        self.db = db
+        self.src_db = src_db
         self.res_pos = [res_pos] if isinstance(res_pos, int) else res_pos
         assert isinstance(self.res_pos[0], int), "The residue positions passed are not integers"
         self.path = os.path.join(os.getcwd(), 'tmpdir') if path is None else path
         os.makedirs(self.path, exist_ok=True)
 
-        if self.db == 'UniProt':  # to get numbering for PDB residues from UniProt
+        if self.src_db == 'UniProt':  # to get numbering for PDB residues from UniProt
             self.mapped = self.unp2pdb_api()
-        elif self.db == 'PDB':  # to get numbering for UniProt residues from PDB
+        elif self.src_db == 'PDB':  # to get numbering for UniProt residues from PDB
             self.mapped = self.pdb2unp_api()
         else:
             print("Please provide the correct database name: {'UniProt', 'PDB'}.")
@@ -180,7 +179,7 @@ class ResiduesMapper():
             f"{', '.join(list({x[1].upper() for x in self.mapped}))}"
             )
         return final
-    
+
     def output_writer(self, out_file=str, out_data=list):
         """
         Writes the mapped residues to the output file in CSV format
@@ -198,32 +197,3 @@ class ResiduesMapper():
 
     def __str__(self):
         return f'{self.src_id} can be mapped to as follows: {self.mapped}'
-
-if __name__ == "__main__":
-    P = argparse.ArgumentParser(description=__doc__, \
-        formatter_class=argparse.RawDescriptionHelpFormatter,\
-        epilog='Writes the user-given family Ids to a file')
-    P.add_argument("-p", "--pdb", type=str, default=[], \
-        help="PDB ID to map the residue position(s) from")
-    P.add_argument("-u", "--unp", type=str, default=[], \
-        help="UniProt ID to map the residue position(s) from")
-    P.add_argument("-n", "--num", type=int, nargs="+", required=True, \
-        help="Residue position(s) to map from PDB/UniProt to UniProt/PDB")
-    P.add_argument("-o", "--out", type=str, default="output.csv", help="Output file name (json)")
-    ARGS = P.parse_args()
-
-    if ARGS.pdb and ARGS.unp:
-        print("Please provide either the PDB ID or the UniProt ID, and not both of them.")
-        sys.exit()
-    elif ARGS.unp:
-        M = ResiduesMapper(ARGS.unp.upper(), ARGS.num, db='UniProt')
-        MAP = M.resmapper_unp2pdb()
-    elif ARGS.pdb:
-        M = ResiduesMapping(ARGS.pdb, ARGS.num, db='PDB')
-        MAP = M.resmapper_pdb2unp()
-    else:
-        print("Please provide either the PDB ID or the UniProt ID. You haven't provided any.")
-        sys.exit()
-
-    output = M.output_writer(ARGS.out, MAP)
-    print(f"The mapping has been written to to the {ARGS.out} file.")

@@ -2,7 +2,7 @@
 [![PyPI](https://img.shields.io/pypi/v/unipdb_mapper?logo=pypi)](https://pypi.org/project/unipdb-mapper)
 ![pylint](https://img.shields.io/badge/PyLint-8.51-yellow?logo=python&logoColor=white)
 
-<p align="center"><img src="https://github.com/HrishiDhondge/unipdb_mapper/raw/main/.github/unipdb_mapper.png" height="250"/></p>
+<p align="center"><img src="https://github.com/HrishiDhondge/unipdb_mapper/raw/main/docs/logo.png" height="250"/></p>
 
 This package maps residue numbering from UniProt/PDB to PDB/UniProt. 
 
@@ -55,7 +55,7 @@ $ unipdb -u P19339 -n 122 123 156 -o output.csv
 
 3. Residue Mapping from PDB to UniProt
 ```
-$ unipdb -p 1b7f -n 122 123 156 -o abc.csv
+$ unipdb -p 1b7f -n 122 123 156 -o another_output.csv
 ```
 
 
