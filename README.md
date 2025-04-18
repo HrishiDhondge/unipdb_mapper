@@ -1,6 +1,6 @@
 # UniPDB Residue Mapper 
 [![PyPI](https://img.shields.io/pypi/v/unipdb_mapper?logo=pypi)](https://pypi.org/project/unipdb-mapper)
-![pylint](https://img.shields.io/badge/PyLint-8.51-yellow?logo=python&logoColor=white)
+![pylint](https://img.shields.io/badge/PyLint-9.65-yellow?logo=python&logoColor=white)
 
 <p align="center"><img src="https://github.com/HrishiDhondge/unipdb_mapper/raw/main/docs/logo.png" height="250"/></p>
 
