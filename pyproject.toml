@@ -12,6 +12,8 @@ requires-python = ">=3.11"
 dependencies = [
     "bs4>=0.0.2",
     "lxml>=5.3.2",
+    "pytest>=8.3.5",
+    "requests-mock>=1.12.1",
     "sh>=2.2.2",
     "wget>=3.2",
 ]
