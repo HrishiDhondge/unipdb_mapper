@@ -41,7 +41,7 @@ def main():
 
     resmap_parser = subparsers.add_parser("resmapper", parents=[common_parser], \
                                           help="Residue Mapper between UniProt and PDB")
-    resmap_parser.add_argument("-n", "--num", type=str, nargs="+", \
+    resmap_parser.add_argument("-n", "--num", type=str, nargs="+", required=True, \
         help="Residue position(s) to map from PDB/UniProt to UniProt/PDB")
     resmap_parser.add_argument("-d", "--dir", type=str, default="SIFTS_XML", \
                                help="Directory to store the SIFTS files")
