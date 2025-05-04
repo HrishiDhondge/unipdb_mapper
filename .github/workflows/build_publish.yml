@@ -74,13 +74,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install uv
-        uses: astral-sh/setup-uv@v3
-        with:
-          enable-cache: true
-          cache-dependency-glob: uv.lock
-      
+        uses: astral-sh/setup-uv@v5
+
       - name: Set up Python
-        run: uv python install 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "pyproject.toml"
+
+      - name: Install the project
+        run: |
+          uv sync
+          uv sync --locked --all-extras --dev
 
       - name: Build
         run: uv build
