@@ -4,6 +4,7 @@
 ![pylint](https://img.shields.io/badge/PyLint-9.65-yellow?logo=python&logoColor=white)
 [![Docs](https://readthedocs.org/projects/unipdb-mapper/badge/?version=latest)](https://unipdb-mapper.readthedocs.io/)
 
+
 <p align="center"><img src="https://github.com/HrishiDhondge/unipdb_mapper/raw/main/docs/logo.png" height="250"/></p>
 
 UniPDB Mapper is a Python package designed for identifier (ID) and residue mapping between UniProt and PDB databases.
