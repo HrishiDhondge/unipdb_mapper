@@ -2,14 +2,13 @@
 
 # UniPDB Mapper Documentation
 
-**UniPDB Mapper** is a Python package designed for residue mapping between UniProt and PDB entries.
+**UniPDB Mapper** is a Python package designed for ID and residue mapping between UniProt and PDB databases.
 
 ## Why use UniPDB Mapper?
 
 **UniPDB Mapper** provides a simple interface for:
 - ID mapping between UniProt and PDB 
 - Residue mapping between UniProt and PDB
-- Renumber the PDB file as per UniProt residue numbering (Feature coming soon)
 
 Additionally, users may access *UniPDB Mapper* directly from the command-line-interface (CLI) as well as from within the Python script.
 

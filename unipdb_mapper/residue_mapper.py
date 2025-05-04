@@ -10,7 +10,7 @@ import wget
 from bs4 import BeautifulSoup
 from sh import gunzip
 
-class ResiduesMapper():
+class ResidueMapper():
     """
     Class for mapping the residue numbering between PDB <--> UniProt residues
     """
@@ -82,7 +82,11 @@ class ResiduesMapper():
         query_res_positions = [str(x) for x in self.res_pos] if res_posi is None else res_posi
 
         final = []
-        residues = self.gather_residues_xml(pdb=pdb_id.lower())
+        try:
+            residues = self.gather_residues_xml(pdb=pdb_id.lower())
+        except Exception as err:
+            warnings.warn(f"Error downloading SIFTS file for '{pdb_id}'. {err}", UserWarning)
+            return []
 
         lambda_eval = { 'PDB': lambda: (pdb is not None) and (pdb.get('dbResNum') != 'null') \
                 and (pdb.get('dbResNum') in query_res_positions),
@@ -128,4 +132,4 @@ class ResiduesMapper():
 
 
     def __str__(self):
-        return f'Residue Mapping started for {self.res_pos} from {self.src_id}'
+        return f'Starting residue mapping for {self.res_pos} from {self.src_id}'

@@ -17,6 +17,7 @@ For help:
 import sys
 import argparse
 from multiprocessing import Pool
+import warnings
 from unipdb_mapper import utilities
 
 
@@ -27,9 +28,9 @@ def main():
 
     common_parser = argparse.ArgumentParser(add_help=False)
     common_parser.add_argument("-p", "--pdb", type=str, nargs="+", default=[], \
-        help="PDB ID to map the residue position(s) from")
+        help="PDB ID to map the identifiers or residue position(s) from")
     common_parser.add_argument("-u", "--unp", nargs="+", type=str, default=[], \
-        help="UniProt ID to map the residue position(s) from")
+        help="UniProt ID to map the identifiers or residue position(s) from")
 
     parse = argparse.ArgumentParser(description="Tool for ID mapping and residue mapping" \
                         "between UniProt and PDB entries")
@@ -76,8 +77,11 @@ def main():
 
     flat_list = [item for sublist in results for item in sublist]
     if args.output:
-        outfile = utilities.output_writer(out_file=args.output, out_data=flat_list)
-        print(f"Results have been saved in {outfile}.")
+        if len(flat_list) < 1:
+            warnings.warn(f"Nothing to write in the file {args.output}")
+        else:
+            outfile = utilities.output_writer(out_file=args.output, out_data=flat_list)
+            print(f"Results have been saved in {outfile}.")
 
 if __name__ == "__main__":
     main()

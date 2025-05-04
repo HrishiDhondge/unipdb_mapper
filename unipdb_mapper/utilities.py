@@ -17,7 +17,7 @@ def resmap_worker(entry, pdb_entry, database, positions):
     Wrapper function around residue_mapper.resmapper method to use multiprocessing
     """
     entry = pdb_entry if database == 'PDB' else entry
-    resmap = residue_mapper.ResiduesMapper(src_id=entry, src_db=database, res_pos=positions)
+    resmap = residue_mapper.ResidueMapper(src_id=entry, src_db=database, res_pos=positions)
     mapped_residues = resmap.resmapper(pdb_id=pdb_entry)
     return mapped_residues
 

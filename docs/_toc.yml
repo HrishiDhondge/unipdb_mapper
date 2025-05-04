@@ -6,7 +6,9 @@ root: intro
 parts:
 - caption: Getting Started 🪄
   chapters:
-  - file: usage
+  - file: installation
+  - file: cli
+  - file: scripting
 - caption: Technical Details
   chapters:
   - file: id-mapping

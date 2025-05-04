@@ -1,6 +1,6 @@
 [project]
 name = "unipdb_mapper"
-version = "0.0.1"
+version = "1.0.0"
 description = "Python Package for residue mapping between UniProt and PDB entries."
 authors = [
     { name = "Hrishikesh DHONDGE", email = "hbdhondge@gmail.com" }
