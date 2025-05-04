@@ -1,7 +1,7 @@
 # UniPDB Residue Mapper 
 ![Build](https://img.shields.io/github/actions/workflow/status/HrishiDhondge/unipdb_mapper/build_publish.yml?branch=main)
 [![PyPI](https://img.shields.io/pypi/v/unipdb_mapper?logo=pypi)](https://pypi.org/project/unipdb-mapper)
-![pylint](https://img.shields.io/badge/PyLint-9.65-yellow?logo=python&logoColor=white)
+![pylint](https://img.shields.io/badge/PyLint-9.57-yellow?logo=python&logoColor=white)
 [![Docs](https://readthedocs.org/projects/unipdb-mapper/badge/?version=latest)](https://unipdb-mapper.readthedocs.io/)
 
 
